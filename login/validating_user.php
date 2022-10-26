@@ -35,6 +35,8 @@ class User_connection
         if($this->database_connection->connection->query($this->command) == TRUE)
         {
             $this->right_password = $this->database_connection->connection->query($this->command);
+            $this->right_password = $this->right_password->fetch_assoc();
+            $this->right_password = $this->right_password['password'];
         } else
         {
             echo "Error updating record: " . $this->database_connection->connection->error;
@@ -43,6 +45,7 @@ class User_connection
         {
             if($this->right_password == $this->password)
             {
+                echo "SIM";
                 $this->session['loggedin'] = TRUE;
                 $this->session['username'] = $this->username;
             }else

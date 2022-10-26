@@ -1,4 +1,8 @@
 <?php
+
+    require_once('../data_registration/connection_information.php');
+    require_once('../data_registration/connection_class.php');
+
     session_start();
     /*
             Verifying if the user is connected on his account, 
@@ -26,17 +30,20 @@
     <body>
         <h2>  All Planet's </h2>
             <?php
-                if(file_exists("../data_registration/all_information.txt"))
+                $database_connection = new Database_Connection($servername, $username, $password, $dbname);
+                $command = "SELECT * FROM planets";
+                $results = $database_connection->connection->query($command);
+                if($results == TRUE)
                 {
-                    $saving_data = fopen("../data_registration/all_information.txt", "r");
-                    while(!feof($saving_data))
+                    while($row = $results->fetch_assoc())
                     {
-                        echo fgets($saving_data) . "<br>";
-                    }
-                }else
+                        echo "&nbsp".$row["planet"]."&nbsp".$row["color"]." ".$row["distance"]."&nbsp";
+                        echo "&nbsp".$row["discoverer"]."&nbsp".$row["country"]."&nbsp";
+                        echo "<br>";
+                    }                
+                } else
                 {
-                    echo "The file doesn't exists! <br>";
-                    header("location: registration.php");
+                    echo "Error showing record: " . $database_connection->error;
                 }
             ?>
         <br><br>

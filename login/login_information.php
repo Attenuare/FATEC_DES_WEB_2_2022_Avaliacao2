@@ -1,5 +1,5 @@
 <?php
- /*
+
     require_once('../data_registration/connection_information.php');
     require_once('validating_user.php');
 
@@ -12,24 +12,13 @@
         {
             $_SESSION["username"] = $user->session['username'];
             $_SESSION['loggedin'] = TRUE;
+            header("location: ../data_registration/registration.php");
 
         } else
         {
             $_SESSION['loggedin'] = FALSE;
         }
     }
-*/
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    session_start();
-    if($_POST['username'] == 'fatec' and $_POST['password'] == 'araras'){
-        $_SESSION['loggedin'] = TRUE;
-        $_SESSION["username"] = 'Fatec Araras';
-         header("location: ../data_registration/registration.php");
-    } else {
-        $_SESSION['loggedin'] = FALSE;
-    }
-}
-
 ?>
  
 <!DOCTYPE html>

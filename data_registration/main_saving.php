@@ -17,3 +17,18 @@
 		);
 	}
 ?>
+
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+</head>
+<body>
+	<form>
+	    <div>
+	        <a href="../data_registration/registration.php" class="btn btn-danger">New Planet</a>
+	    </div>
+	</form>
+</body>

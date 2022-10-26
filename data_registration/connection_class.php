@@ -41,7 +41,6 @@ class Database_Connection
     public function inserting_occurrence(string $color, int $distance, string $planet, string $discoverer, string $country)
     {
         $this->command = "INSERT INTO planets(color, planet, distance, discoverer, country) VALUES('" . $color ."','" . $planet . "'," . $distance . ",'" . $discoverer . "','" . $country . "');";
-        echo $this->command;
         if($this->connection->query($this->command) == TRUE)
         {
             echo "Record updated successfully";
